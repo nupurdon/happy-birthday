@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>Confetti Animation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     body {
       background-color: #f2f2f2;
-      display: flex;
+      /* display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: center; */
       height: 100vh;
       margin: 0;
     }
@@ -37,16 +38,123 @@
       left: 0;
       pointer-events: none;
     }
+
+    .popup {
+      /* position: fixed; */
+      /* top: 0; */
+      /* left: 0; */
+      /* width: 100%; */
+      /* height: 100%; */
+      /* background-color: rgba(0, 0, 0, 0.5); */
+      /* display: flex; */
+      /* justify-content: center; */
+      /* align-items: center; */
+      /* z-index: 9999; */
+      /* display: none; */
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      font-size: 100px;
+    }
+    .header {
+      background-color: #333;
+      text-align: center;
+      font-size: 50px;
+      /* padding: 20px; */
+    }
+    
+    .logo i {
+      font-size: 30px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .logo a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .restOfBody{
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 50px;
+    }
+
   </style>
 </head>
 <body>
-  <div class="button-container">
-    <button class="confetti-button">Sparkle Confetti!</button>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+            <i class="material-icons">home</i>
+            
+            </a>
+        </div>
+    </header>
+  <!-- <div class="popup">
+    <div class="popup-content">
+      <h3 class="popup-question"></h3>
+      <div class="popup-options">
+        <button class="popup-option"></button>
+        <button class="popup-option"></button>
+        <button class="popup-option"></button>
+      </div>
+    </div>
   </div>
-
-  <canvas id="confetti-canvas"></canvas>
-
+  </div> -->
+  <div class="restOfBody">
+  <div style="justify-content: center;align-items: center;padding-left: 280px;">
+    <div><div class="popup">
+        <div class="popup-content">
+          <h3 class="popup-question"></h3>
+          <div class="popup-options">
+            <button class="popup-option"></button>
+            <button class="popup-option"></button>
+            <button class="popup-option"></button>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div></div>
+    <div><div class="button-container">
+        <button class="confetti-button mcq-button">Sparkle Confetti!</button>
+      </div></div>
+  </div>
+  <canvas></canvas>
+  <!-- <div class="button-container">
+    <button class="confetti-button mcq-button">Sparkle Confetti!</button>
+  </div> -->
+  <canvas id="confetti-canvas">
+    <div class="popup">
+    <div class="popup-content">
+    </div>
+  </div>
+  </div></canvas>
+</div>
   <script>
+
+var questions = [
+      {
+        question: "Happy birthday Bitch",
+      },
+      {
+        question: "Happy birhday",
+      },
+      {
+        question: "Happy birthday boss",
+      }
+    ];
+
     const button = document.querySelector('.confetti-button');
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
@@ -55,7 +163,7 @@
 
     button.addEventListener('click', () => {
       startConfetti();
-      setTimeout(stopConfetti, 3000);
+      setTimeout(stopConfetti, 10000);
       blingConfetti();
     });
 
@@ -85,7 +193,7 @@
           r,
           color,
           tilt: Math.random() * 10,
-          tiltAngleIncrement: Math.random() * 0.1 + 0.01,
+          tiltAngleIncrement: Math.random() * 1 + 0.01,
           tiltAngle: 0
         };
       }
@@ -123,9 +231,10 @@
         for (let i = 0; i < particles.length; i++) {
           updateParticle(particles[i]);
         }
-
-        while (particles.length < 100) {
+        let count=0;
+        while (count < 50) {
           particles.push(createParticle());
+          count=count+1;
         }
       }
 
@@ -135,6 +244,25 @@
     function stopConfetti() {
       canvas.style.display = 'none';
     }
+
+    function openPopup() {
+      var randomIndex = Math.floor(Math.random() * questions.length);
+      var questionObj = questions[randomIndex];
+      
+      var popupQuestion = document.querySelector(".popup-question");
+      var popupOptions = document.querySelectorAll(".popup-option");
+      
+      popupQuestion.textContent = questionObj.question;
+      popupOptions.forEach(function(option, index) {
+        option.textContent = questionObj.options[index];
+      });
+      
+      document.querySelector(".popup").style.display = "flex";
+    }
+
+    document.querySelector(".mcq-button").addEventListener("click", openPopup);
+
+
   </script>
 </body>
 </html>
