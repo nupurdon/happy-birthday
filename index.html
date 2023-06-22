@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Website</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      transition: background-color 0.5s;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .body-text {
+      margin-bottom: 20px;
+    }
+    
+    .card {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .color-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    /* Media queries for padding adjustments */
+    @media (min-width: 576px) {
+      .card {
+        padding: 20px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .card {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Happy birthday donnn</h1>
+  </header>
+  
+  <div class="container" style="text-align: center;padding-top: 8%;">
+    <h2>Welcome to My Website</h2>
+    
+    <div class="body-text" style="text-align: center;padding-top: 3%;padding-bottom: 3%;">
+      <p>This is the body text of the website. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales ex non ex facilisis, vel varius orci consequat. Nulla facilisi.</p>
+    </div>
+    
+    <div class="row" style="justify-content: center;">
+      <div class="col-lg-5">
+        <div class="card" onclick="location.href='page1.html'">
+          <h3>Guess who</h3>
+          <p>Click to go to Page 1</p>
+        </div>
+      </div>
+      
+      <div class="col-lg-5">
+        <div class="card" onclick="location.href='page2.html'">
+          <h3></h3>
+          <p>Click to go to Page 2</p>
+        </div>
+      </div>
+      
+      <div class="col-lg-5">
+        <div class="card" onclick="location.href='page3.html'">
+          <h3>Card 3</h3>
+          <p>Click to go to Page 3</p>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card" onclick="location.href='page3.html'">
+          <h3>Card 3</h3>
+          <p>Click to go to Page 3</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <button class="color-button" onclick="changeColor()">Surprise</button>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+  </div>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    function changeColor() {
+      var randomColor = getRandomColor();
+      document.body.style.backgroundColor = randomColor;
+    }
+  
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>
