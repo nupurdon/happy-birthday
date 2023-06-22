@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confetti Animation</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    .confetti-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .confetti-button:hover {
+      background-color: #555;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button class="confetti-button">Sparkle Confetti!</button>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    const button = document.querySelector('.confetti-button');
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    button.addEventListener('click', () => {
+      startConfetti();
+      setTimeout(stopConfetti, 3000);
+      blingConfetti();
+    });
+
+    function blingConfetti(){
+        canvas.style.display = 'block';
+    }
+
+    function startConfetti() {
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const particles = [];
+      const colors = ['#ff0000', '#00ff00', '#0000ff'];
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createParticle() {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const r = randomInRange(5, 15);
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        return {
+          x,
+          y,
+          r,
+          color,
+          tilt: Math.random() * 10,
+          tiltAngleIncrement: Math.random() * 0.1 + 0.01,
+          tiltAngle: 0
+        };
+      }
+
+      function drawParticle(particle) {
+        ctx.beginPath();
+        ctx.lineWidth = particle.r / 2;
+        ctx.strokeStyle = particle.color;
+        ctx.moveTo(particle.x + particle.tilt + particle.r / 4, particle.y);
+        ctx.lineTo(particle.x + particle.tilt, particle.y + particle.tilt + particle.r / 4);
+        ctx.stroke();
+      }
+
+      function updateParticle(particle) {
+        particle.tiltAngle += particle.tiltAngleIncrement;
+        particle.tilt = Math.sin(particle.tiltAngle - particle.tiltAngleIncrement);
+        particle.y += Math.pow(particle.r, 0.5);
+
+        drawParticle(particle);
+      }
+
+      function loop() {
+        const now = Date.now();
+        const remaining = Math.max(animationEnd - now, 0);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (remaining === 0) {
+          canvas.style.display = 'none';
+          return;
+        }
+
+        requestAnimationFrame(loop);
+
+        for (let i = 0; i < particles.length; i++) {
+          updateParticle(particles[i]);
+        }
+
+        while (particles.length < 100) {
+          particles.push(createParticle());
+        }
+      }
+
+      loop();
+    }
+
+    function stopConfetti() {
+      canvas.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
