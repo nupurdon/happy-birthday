@@ -3,14 +3,29 @@
 <head>
   <title>Confetti Animation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
   <style>
+    
     body {
-      background-color: #f2f2f2;
-      /* display: flex;
-      justify-content: center;
-      align-items: center; */
       height: 100vh;
       margin: 0;
+      padding: 0;
+      /* background-color: #f2f2f2; */
+      background: linear-gradient(135deg, #FFC3A0, #FFAFBD, #FFC3A0, #FFAFBD, #C0C8FF, #C0C8FF);
+      transition: background-color 0.5s;
+      font-family: 'Amatic SC',cursive;
+      /* font-size: larger; */
+      font-weight: 700;
+      /* font-size: large; */
+    }
+
+    header {
+      /* background-color: #333; */
+      background-color: transparent;
+      color: #fff;
+      padding: 20px;
+      /* font-variant: small-caps; */
+      text-align: center;
     }
 
     .button-container {
@@ -54,20 +69,15 @@
     }
 
     .popup-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
+      /* background-color: #fff; */
+      /* padding: 20px; */
+      /* border-radius: 5px; */
       max-width: 400px;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      font-size: 100px;
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+      font-size: 90px;
     }
-    .header {
-      background-color: #333;
-      text-align: center;
-      font-size: 50px;
-      /* padding: 20px; */
-    }
+    
     
     .logo i {
       font-size: 30px;
@@ -232,7 +242,7 @@ var questions = [
           updateParticle(particles[i]);
         }
         let count=0;
-        while (count < 50) {
+        while (count < 20) {
           particles.push(createParticle());
           count=count+1;
         }

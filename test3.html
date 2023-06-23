@@ -1,32 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Website</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
-  <title>Document</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      /* background-color: #f2f2f2; */
+      background: linear-gradient(135deg, #FFC3A0, #FFAFBD, #FFC3A0, #FFAFBD, #C0C8FF, #C0C8FF);
+      transition: background-color 0.5s;
+      font-family: 'Amatic SC',cursive;
+      font-size: larger;
+      font-weight: 700;
+      font-size: x-large;
+    }
+
+    header {
+      /* background-color: #333; */
+      background-color: transparent;
+      color: #fff;
+      padding: 20px;
+      /* font-variant: small-caps; */
+      text-align: center;
+    }
+    .logo i {
+      font-size: 30px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .logo a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .container {
+      /* max-width: 960px; */
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .quote {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .quote:hover {
+      background-color: #f9f9f9;
+    }
+
+    .quote__text {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .quote__author {
+      font-size: 16px;
+      color: #777;
+      font-style: italic;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      display: none;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup-text {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .popup-author {
+      font-size: 14px;
+      color: #777;
+      font-style: italic;
+    }
+
+    .close-button {
+      background-color: #333;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-button:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
-  <div class="row" style="text-align: center;">
-    <div class="col-lg-2"></div>
-    <div class="quote col-lg-4" onclick="showPopup(0)">
+
+    <header class="header" style="padding-bottom: 100px;">
+        <div class="logo">
+            <a href="index.html">
+            <i class="material-icons">home</i>
+            
+            </a>
+        </div>
+    </header>
+  <div class="container row">
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="quote col-lg-4 col-md-4 col-sm-12" onclick="showPopup(0)">
       <div class="quote__text">"The greatest glory in living lies not in never falling, but in rising every time we fall."</div>
       <div class="quote__author">- Nelson Mandela</div>
     </div>
-
-    <div class="quote col-lg-4" onclick="showPopup(1)">
+    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+    <div class="quote col-lg-4 col-md-4 col-sm-12" onclick="showPopup(1)">
         <div class="quote__text" id="myDiv">"In Lorem ipsum, dolor sit amet consectetur adipisicing elit. In nihil veritatis ipsa molestias voluptatem animi porro excepturi, delectus facilis temporibus eum corporis labore aspernatur ab obcaecati aliquid cupiditate, aperiam laborum quos rem inventore maxime. Nihil, asperiores. Odio distinctio at dolorum culpa, hic maxime tempora harum! Reiciendis facilis perferendis beatae corrupti dolor unde amet quaerat. Ea mollitia repellat voluptatibus, excepturi facere doloribus illo dolores praesentium minus nesciunt vitae vero. Quibusdam, reprehenderit iure aperiam, deserunt labore quae repellat doloribus facilis debitis, distinctio veritatis suscipit minima in molestias dolorem quo perferendis laboriosam expedita obcaecati. Incidunt omnis quas impedit molestias, illum corporis quasi nostrum. the end, it's not the years in your life that count. It's the life in your years."</div>
       <div class="quote__author">- Abraham Lincoln</div>
     </div>
-    <!-- <div class="col-lg-2"></div> -->
-    <div class="col-lg-2"></div>
-    
-    <div class="quote col-lg-4" onclick="showPopup(2)">
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <!-- <div class="col-lg-1 col-md-1 col-sm-1"></div> -->
+
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="quote col-lg-4 col-md-4 col-sm-12" onclick="showPopup(2)">
       <div class="quote__text">"The only way to do great work is to love what you do."</div>
       <div class="quote__author">- Steve Jobs</div>
     </div>
+    <div class="col-lg-2 col-md-2 col-sm-1"></div>
+    <div class="quote col-lg-4 col-md-4 col-sm-12" onclick="showPopup(2)">
+      <div class="quote__text">"The only way to do great work is to love what you do."</div>
+      <div class="quote__author">- Steve Jobs</div>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+
 
     <div class="popup" id="popup">
       <div class="popup-content">
@@ -36,6 +172,7 @@
       </div>
     </div>
   </div>
+
   <script>
     function showPopup(index) {
       var quotes = [
