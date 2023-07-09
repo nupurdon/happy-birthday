@@ -245,3 +245,4 @@ export default function ConfettiGenerator(params) {
     clear: _clear
   }
 }
+ 
