@@ -177,20 +177,55 @@
   <script>
     var questions = [
       {
-        question: "What is the capital of France?",
-        options: ["Paris", "London", "Berlin"],
+        question: "I left India to escape the system but then I met you",
+        options: ["Athish", "Vivek", "Nishta"],
         answer: 0
       },
       {
-        question: "Which planet is known as the Red Planet?",
-        options: ["Venus", "Mars", "Jupiter"],
+        question: "Who needs ironing boards when you have us",
+        options: ["Rishitaa", "Krisha", "Nishta"],
+        answer: 2
+      },
+      {
+        question: "Khakra buddy",
+        options: ["Shivkumar", "Vivek","Krisha"],
         answer: 1
       },
       {
-        question: "What is the largest ocean in the world?",
-        options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+        question: "You share your bday w my mums Who am I ?🤨",
+        options: ["Shivkumar", "Kartikey", "Krisha"],
+        answer: 1
+      },
+      {
+        question: "Krisha thinks she is your real bestfriend. But I really am your bestfriend ?🤨",
+        options: ["Nidhi", "Nishta", "Krisha"],
         answer: 2
+      },
+      {
+        question: "Shoes leke aa december me",
+        options: [ "Ansh","Amaan", "Krisha"],
+        answer: 0
+      },
+      {
+        question: "Ansh is a bitch",
+        options: ["Amaan", "Kushaz", "Krisha"],
+        answer: 1
       }
+      // {
+      //   question: "What is the largest ocean in the world?",
+      //   options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+      //   answer: 2
+      // },
+      // {
+      //   question: "What is the largest ocean in the world?",
+      //   options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+      //   answer: 2
+      // },
+      // {
+      //   question: "What is the largest ocean in the world?",
+      //   options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+      //   answer: 2
+      // },
     ];
     
     function openPopup() {
@@ -209,8 +244,19 @@
     }
   
     function checkAnswer(selectedOption) {
-  var randomIndex = Math.floor(Math.random() * questions.length);
-  var questionObj = questions[randomIndex];
+  // var randomIndex = Math.floor(Math.random() * questions.length);
+  var myText=document.querySelector(".popup-question").textContent;
+  var ans;
+  // console.log(myText);
+  for(let i=0; i<5; i++){
+    var curopt=questions[i];
+    if(curopt.question===myText){
+      ans=i;
+    }
+  }
+  var questionObj = questions[ans];
+  // console.log(questionObj);
+  // console.log(ans+' '+myText);
   var isCorrect = selectedOption === questionObj.answer;
 
   var popupOptions = document.querySelectorAll(".popup-option");
